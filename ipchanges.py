@@ -20,8 +20,9 @@ def notify():   # Sends an email with the present IP as body of the message.
     s = smtplib.SMTP(server, port)
     s.starttls()
     s.login(user, password)
-    s.sendmail(sender, [receiver], msg.as_string())
+    s.sendmail(sender,receiver, msg.as_string())
     s.quit()
+    print("Changed to " + ipnow)
 
 def checkip():  # Compares last IP with the present one. If the IP changed, the ipfile is updated and notify() is invoked.    
     iplog = open(ipfile, 'r')
@@ -33,6 +34,6 @@ def checkip():  # Compares last IP with the present one. If the IP changed, the 
         ipnew.close()
         notify()
     else:
-        print("No change detected.")
+        print("Unchanged (" + ipnow + ")")
 
 checkip()

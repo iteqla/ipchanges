@@ -21,7 +21,7 @@ def get_ip(ip_api):
 
 def notify(current_ip: str, smtp_settings: dict):   # Sends an email with the present IP as body of the message.
     msg = MIMEText(current_ip)
-    msg['Subject'] = 'xxx' # Subject of the email you'll receive.
+    msg['Subject'] = "xxx" # Subject of the email you'll receive.
     msg['From'] = smtp_settings['sender']
     msg['To'] = smtp_settings['receiver']
 

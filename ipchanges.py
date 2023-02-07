@@ -1,8 +1,8 @@
 import smtplib
 import logging
+import sys
 from email.mime.text import MIMEText
 from requests import get
-
 
 ipfile = "PATH_xxx/FILE.xxx" # File and its full path, which you need to check and write your IP on.
 ip_site = "https://api.ipify.org"
@@ -47,7 +47,8 @@ def store_ip(curr_ip):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(format="%(asctime)-15s [%(levelname)s] %(funcName)s: %(message)s", level=logging.DEBUG)
+    logging.basicConfig(format="%(asctime)-15s [%(levelname)s] %(funcName)s: %(message)s", level=logging.DEBUG,stream=sys.stdout)
+    logging.info("===== START =====")
 
 # Compares last IP with the present one. If the IP changed, the ipfile is updated and notify() is invoked.
     smtp_sets = {
